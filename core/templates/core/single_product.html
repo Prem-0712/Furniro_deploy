@@ -1,0 +1,30 @@
+{% extends "core/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="container row">
+    <div class="col-lg-6">
+            <img class= 'img-fluid' src="{{sp.furniture_img.url}}" alt="aaaa meri jaan !!">
+    </div>
+
+    <div class="col-lg-6">
+        <h1>{{sp.name}}</h1>
+        <p>{{sp.small_description}}</p>
+        <p>{{sp.description}}</p>
+        <div class="price d-flex">
+            <p class="mx-5">{{sp.discounted_price}}</p>
+            <s>{{sp.selling_price}}</s>
+        </div>
+        <a href="{% url "addtocart" sp.id %}" class="btn btn-info my-2 mr-2">Add to cart</a>
+        <a href="{% url "buynow" sp.id %}" class="btn btn-success my-2">Buy Now</a>
+    </div>
+    {% if messages %}
+        {% for message in messages %}                            
+            <span {% if message.tags %} class="alert alert-{{message.tags}}" {% endif %}>{{message}}</span> 
+        {% endfor %}
+    {% endif %}
+</section>
+
+{% endblock content %}

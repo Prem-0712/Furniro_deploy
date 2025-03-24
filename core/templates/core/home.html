@@ -1,0 +1,24 @@
+
+{% extends "core/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+
+<section class="content container-fluid">
+    <div class="content2 container d-flex justify-content-end">
+        <div class="content3">
+            <h5 class="cont-head">New Arrival</h5>
+            <h1 class="cont-brand">Discover Our <br> New Collection</h1>
+            <p class="cont-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
+            <a class="cont-btn" href="">BUY NOW</a>
+        </div>
+    </div>
+</section>
+
+<!-- -------------------------------OUR PRODUCTS-------------------------------------- -->
+
+{% include "core/shop.html" %}
+        
+{% endblock content %}

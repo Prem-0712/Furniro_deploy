@@ -1,0 +1,131 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<div class="container-fluid profile">
+      <div class="row">
+        <div class="col-md-2 d-none d-md-block sidebar" style="background-color: #343a40; height: 100vh; padding-top: 20px; box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);">
+            <nav>
+                <div class="sidebar-sticky" style="position: -webkit-sticky; position: sticky; top: 0;">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'profile' %}" 
+                                style="color: #f8f9fa; padding: 12px 20px; display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 500; background-color: #007bff; border-radius: 5px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                                    style="stroke: #ffffff; transition: stroke 0.3s ease-in-out;">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'changepass' %}" 
+                                style="color: #f8f9fa; padding: 12px 20px; display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 500; transition: all 0.3s ease-in-out;" 
+                                onmouseover="this.style.backgroundColor='#495057'; this.style.color='#ffffff'; this.style.borderRadius='5px';" 
+                                onmouseout="this.style.backgroundColor='transparent'; this.style.color='#f8f9fa';">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                                    style="stroke: #f8f9fa; transition: stroke 0.3s ease-in-out;">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                                Change Password
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url "order" %}" 
+                                style="color: #f8f9fa; padding: 12px 20px; display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 500; transition: all 0.3s ease-in-out;" 
+                                onmouseover="this.style.backgroundColor='#495057'; this.style.color='#ffffff'; this.style.borderRadius='5px';" 
+                                onmouseout="this.style.backgroundColor='transparent'; this.style.color='#f8f9fa';">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                                    style="stroke: #f8f9fa; transition: stroke 0.3s ease-in-out;">
+                                    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                                    <polyline points="13 2 13 9 20 9"></polyline>
+                                </svg>
+                                Orders
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'viewcart' %}" 
+                                style="color: #f8f9fa; padding: 12px 20px; display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 500; transition: all 0.3s ease-in-out;" 
+                                onmouseover="this.style.backgroundColor='#495057'; this.style.color='#ffffff'; this.style.borderRadius='5px';" 
+                                onmouseout="this.style.backgroundColor='transparent'; this.style.color='#f8f9fa';">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                                    style="stroke: #f8f9fa; transition: stroke 0.3s ease-in-out;">
+                                    <circle cx="9" cy="21" r="1"></circle>
+                                    <circle cx="20" cy="21" r="1"></circle>
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                </svg>
+                                Cart
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" 
+                                style="color: #f8f9fa; padding: 12px 20px; display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 500; transition: all 0.3s ease-in-out;" 
+                                onmouseover="this.style.backgroundColor='#495057'; this.style.color='#ffffff'; this.style.borderRadius='5px';" 
+                                onmouseout="this.style.backgroundColor='transparent'; this.style.color='#f8f9fa';">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                                    style="stroke: #f8f9fa; transition: stroke 0.3s ease-in-out;">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                                Address
+                            </a>
+                        </li>
+                    </ul>            
+                </div>
+            </nav>
+        </div>
+        
+        <div class="col-md-8">
+            <div class="container h-100 py-5">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-10">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h3 class="fw-bold text-primary">Shopping Cart</h3>
+                        </div>
+                        {% for item in cart_items %}
+                        <div class="card rounded-3 mb-4 shadow-sm" style="border: none;">
+                            <div class="card-body p-4">
+                                <div class="row d-flex justify-content-between align-items-center">
+                                    <div class="col-md-2 col-lg-2 col-xl-2">
+                                        <img src="{{ item.product.furniture_img.url }}" class="img-fluid rounded-3 border shadow-sm" alt="{{ item.product.name }}">
+                                    </div>
+                                    <div class="col-md-3 col-lg-3 col-xl-3">
+                                        <p class="lead fw-semibold mb-2">{{ item.product.name }}</p>
+                                    </div>
+                                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                        <button class="btn btn-light px-2 border rounded-circle">
+                                            <a href="{% url 'delete_quantity' item.id %}" style="color: #dc3545;"><i class="fas fa-minus"></i></a>
+                                        </button>
+                                        <div class="form-control form-control-sm text-center mx-2" style="width: 50px; font-weight: bold;">
+                                            {{ item.quantity }}
+                                        </div>
+                                        <button class="btn btn-light px-2 border rounded-circle">
+                                            <a href="{% url 'add_quantity' item.id %}" style="color: #28a745;"><i class="fas fa-plus"></i></a>
+                                        </button>
+                                    </div>
+                                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                        <h5 class="fw-bold text-dark">₹{{ item.price_and_quantity_total }}</h5>
+                                    </div>
+                                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                        <a href="{% url 'deletecart' item.id %}" class="text-danger" style="font-size: 1.3rem;">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <div class="card p-3 shadow-sm text-center" style="border: none;">
+                            <a href="{% url 'checkout' %}" class="btn btn-success btn-lg fw-bold">Proceed to Pay</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+      </div>
+    </div>
+{% endblock content %}

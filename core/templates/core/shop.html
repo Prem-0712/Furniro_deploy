@@ -1,0 +1,37 @@
+{% load static %}
+
+
+<section class="products">
+    <h1 class='prod_heading text-center'>Our Products</h1>
+
+    <div class="container">
+        <div class="row justify-content-center"> 
+            <div class="col-lg-4">
+                <div class="div">
+                    <a href="{% url 'sofa' %}"><img class='img-fluid prod_img' src="{% static 'core/images/our_products_img_3.svg' %}" alt=""></a>
+                </div>
+                <div class="img_content">
+                    <div class="cont_prime"><p>Sofa</p></div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="div">
+                    <a href="{% url 'table' %}"><img class='img-fluid prod_img' src="{% static 'core/images/our_products_img_1.svg' %}" alt=""></a>
+                </div>
+                <div class="img_content">
+                    <div class="cont_prime"><p>Table</p></div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="div">
+                    <a href="{% url 'chair' %}"><img class='img-fluid prod_img' src="{% static 'core/images/our_products_img_2.svg' %}" alt=""></a>
+                </div>
+                <div class="img_content">
+                    <div class="cont_prime"><p>Chair</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

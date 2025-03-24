@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "core/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "core/css/home_media.css" %}">
+    <link rel="stylesheet" href="{% static "core/css/home.css" %}">
+    <title>Furniro</title>
+
+<body>
+
+<!-- --------------------------BANNER SECTION --------------------------------- -->
+<header class="container-fluid">
+    <div class="container " id="header">
+        <div class=" row align-items-center">
+            
+            <!-- Logo Section (1/4 Screen) -->
+            <div class="col-lg-2 col-md-3 col-6">
+                <nav class="navbar d-flex align-items-center">
+                    <img src="{% static "core/images/Furniro_logo.svg" %}" alt="Logo" width="45" height="28">
+                    <h5 class="brand-heading">Furniro</h5>
+                </nav>
+            </div>
+
+            <!-- Navbar Links (2/4 Screen) -->
+            <div class="col-lg-6 col-md-6 col-12">
+                <nav class="navbar navbar-expand-lg">
+                    <!-- Toggle Button for Small Screens -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <!-- Collapsible Navbar -->
+                    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                        <div class="navbar-nav">
+                            <a class="nav-link navigation-links" href="#">Home</a>
+                            <a class="nav-link navigation-links" href="#">Shop</a>
+                            <a class="nav-link navigation-links" href="#">About</a>
+                            <a class="nav-link navigation-links" href="#">Contact</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Icons Section (1/4 Screen) -->
+            <div class="col-lg-4 col-md-3 col-6">
+                <nav class="navbar">
+                    <div class="navbar-nav navbar-collapse d-flex flex-row justify-content-end ms-auto align-items-center" id="navbarNav">
+
+                        <a class="nav-link" href="#"><img class="img-links" src="{% static "core/images/like.sv" %}g" alt="Like"></a>
+                        
+                        <a class="nav-link" href="#"><img class="img-links" src="{% static "core/images/search.svg" %}" alt="Search"></a>
+                        
+                        <a class="nav-link" href="{% url "viewcart" %}"><img class="img-links" src="{% static "core/images/cart.svg" %}" alt="Cart"></a>
+
+                        
+                        
+                        {% if request.user.is_authenticated %}
+
+                        <a class="nav-link" href="{% url "registration" %}"><img class="img-links" src="{% static "core/images/login.svg" %}" alt="Login"></a>
+                        
+                        <a class="nav-link" href="{% url "logout" %}">Logout</a>
+                        
+
+                        {% else %}
+                        
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="authDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img class="img-links" src="{% static 'core/images/login.svg' %}" alt="Login">
+                          </a>
+                          <ul class="dropdown-menu" aria-labelledby="authDropdown">
+                            <li><a class="dropdown-item" href="{% url 'registration' %}">Register</a></li>
+                            <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+                          </ul>
+
+                        {% endif %}
+                    </div>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+</header>

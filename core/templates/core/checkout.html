@@ -1,0 +1,102 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+
+<div class="container" style="margin-top: 30px;">
+    <div class="row">
+        <!-- Order Summary -->
+        <div class="col-sm-6">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card" style="box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); border-radius: 10px;">
+                            <div class="card-header text-center" style="background-color: #007bff; color: white; border-radius: 10px 10px 0 0;">
+                                <h3><strong>Order Summary</strong></h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr style="background-color: #f8f9fa;">
+                                                <th>Furniture</th>
+                                                <th class="text-center">Price</th>
+                                                <th class="text-center">Quantity</th>
+                                                <th class="text-right">Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for item in cart_items %}
+                                            <tr>
+                                                <td>{{ item.product.name }}</td>
+                                                <td class="text-center">₹{{ item.product.discounted_price }}</td>
+                                                <td class="text-center">{{ item.quantity }}</td>
+                                                <td class="text-right">₹{{ item.product.price_and_quantity_total }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td class="text-center"><strong>Subtotal</strong></td>
+                                                <td class="text-right">₹<b>{{ total }}</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td class="text-center"><strong>Shipping</strong></td>
+                                                <td class="text-right">₹2000</td>
+                                            </tr>
+                                            <tr style="background-color: #f8f9fa; font-weight: bold;">
+                                                <td><i class="fa fa-barcode"></i></td>
+                                                <td></td>
+                                                <td class="text-center"><strong>Total</strong></td>
+                                                <td class="text-right">₹<b>{{ final_price }}</b></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Address Selection -->
+        <div class="col-sm-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <form action="{% url 'payment' %}" method="POST">
+                            {% csrf_token %}
+                            {% for add in address %}
+                            <label>
+                                <div class="card flex-md-row mb-4 box-shadow h-md-250" 
+                                     style="border-radius: 10px; padding: 15px; margin-top: 15px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+                                    <div class="card-body d-flex flex-column align-items-start">
+                                        <h4 class="mb-0" style="color: #007bff;">
+                                            <input type="radio" name="selected_address" value="{{ add.id }}" checked>
+                                            {{ add.name }}
+                                        </h4>
+                                        <p style="margin: 5px 0;"><strong>Address:</strong> {{ add.address }}</p>
+                                        <p style="margin: 5px 0;"><strong>City:</strong> {{ add.city }}</p>
+                                        <p style="margin: 5px 0;"><strong>State:</strong> {{ add.state }}</p>
+                                        <p style="margin: 5px 0;"><strong>Pincode:</strong> {{ add.pincode }}</p>
+                                    </div>
+                                </div>
+                            </label>
+                            {% empty %}
+                            <p style="color: red;">No saved addresses found. Please add one before proceeding.</p>
+                            {% endfor %}
+                            <input type="submit" class="btn btn-primary btn-sm mt-2" 
+                                   style="width: 100%; font-size: 18px; padding: 10px; border-radius: 5px;" 
+                                   value="Proceed to Payment">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}

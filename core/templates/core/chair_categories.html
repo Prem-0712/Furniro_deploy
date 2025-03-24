@@ -1,0 +1,19 @@
+{% extends "core/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container row">
+    {% for cc in cc  %}
+    <div class="col-lg-4">
+        <a href="{% url "single" cc.id %}" style = 'text-decoration: none;'>
+            <img class='img-fluid' src="{{cc.furniture_img.url}}" alt="">
+            <h4>{{cc.name}}</h4>
+            <h5>{{cc.original_price}}</h5>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

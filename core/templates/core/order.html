@@ -1,0 +1,213 @@
+{% extends "core/base.html" %}
+
+{% block css %}
+<style>
+    body {
+        background: #f4f4f4;
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .order {
+        margin: 50px 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .card {
+        width: 90%;
+        max-width: 600px;
+        padding: 25px;
+        background: white;
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        border-top: 5px solid #fc6731;
+    }
+
+    .title {
+        font-size: 22px;
+        font-weight: bold;
+        color: #fc6731;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .info {
+        padding: 15px;
+        background: #fafafa;
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+
+    #heading {
+        font-weight: bold;
+        color: #444;
+        font-size: 14px;
+    }
+
+    #details {
+        font-size: 16px;
+        color: #666;
+    }
+
+    .pricing {
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .pricing div {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+    }
+
+    .pricing span {
+        font-size: 16px;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .total {
+        font-size: 18px;
+        font-weight: bold;
+        color: #fc6731;
+        text-align: right;
+        padding: 15px 0;
+    }
+
+    .tracking {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        margin-top: 20px;
+    }
+
+    .progress-track {
+        padding: 10px 15px;
+        display: flex;
+        justify-content: center;
+    }
+
+    #progressbar {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0;
+        list-style: none;
+        counter-reset: step;
+    }
+
+    #progressbar li {
+        font-size: 14px;
+        font-weight: 500;
+        color: #aaa;
+        position: relative;
+        text-align: center;
+        width: 33%;
+    }
+
+    #progressbar li::before {
+        content: counter(step);
+        counter-increment: step;
+        width: 25px;
+        height: 25px;
+        background: #ddd;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto 8px;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    #progressbar li.active {
+        color: #fc6731;
+        font-weight: bold;
+    }
+
+    #progressbar li.active::before {
+        background: #fc6731;
+    }
+
+    .footer {
+        text-align: center;
+        font-size: 14px;
+        margin-top: 20px;
+        padding: 10px;
+        border-top: 1px solid #eee;
+    }
+
+    .footer img {
+        height: 25px;
+        margin-right: 5px;
+    }
+
+    .footer a {
+        color: #fc6731;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .footer a:hover {
+        text-decoration: underline;
+    }
+</style>
+{% endblock css %}
+
+{% block content %}
+
+{% for o in ord %}
+<div class="order">
+    <div class="card">
+        <div class="title">Purchase Receipt</div>
+        
+        <div class="info">
+            <div style="display: flex; justify-content: space-between;">
+                <div>
+                    <span id="heading">Date:</span><br>
+                    <span id="details">{{ o.date }}</span>
+                </div>
+                <div>
+                    <span id="heading">Order No:</span><br>
+                    <span id="details">{{ o.order_number }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="pricing">
+            <div>
+                <span>{{ o.furniture.name }}</span>
+                <span>₹ {{ o.furniture.discounted_price }}</span>
+            </div>
+            <div>
+                <span>Shipping</span>
+                <span>₹ 2000</span>
+            </div>
+        </div>
+
+        <div class="total">
+            <span>Total: ₹ {{ o.furniture.discounted_price|add:2000 }}</span>
+        </div>
+
+        <div class="tracking">Tracking Order</div>
+
+        <div class="progress-track">
+            <ul id="progressbar">
+                <li class="{% if o.status == 'PENDING' or o.status == 'PROCESSING' or o.status == 'COMPLETED' %} active {% endif %}">Pending</li>
+                <li class="{% if o.status == 'PROCESSING' or o.status == 'COMPLETED' %} active {% endif %}">Processing</li>
+                <li class="{% if o.status == 'COMPLETED' %} active {% endif %}">Completed</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <img src="https://i.imgur.com/YBWc55P.png" alt="Help">
+            Need help? <a href="#">Contact us</a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock content %}

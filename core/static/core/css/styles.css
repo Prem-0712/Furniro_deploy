@@ -1,0 +1,51 @@
+.hero-section {
+    background-color: #F9F1E7;
+    padding: 120px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 600px;
+    margin-left: auto;
+    padding: 40px;
+}
+
+.badge {
+    background-color: #E89F71;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.hero-title {
+    font-size: 52px;
+    font-weight: 700;
+    color: #3A3A3A;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-description {
+    font-size: 18px;
+    color: #616161;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.btn-primary {
+    background-color: #E89F71;
+    border: none;
+    padding: 16px 40px;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #d88d5f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(232, 159, 113, 0.3);
+}
